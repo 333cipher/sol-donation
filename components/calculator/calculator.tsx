@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { DollarSign } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -35,11 +34,12 @@ export default function Calculator() {
         setError("")
       }
     } catch (err) {
-      setError("Failed to fetch wallet losses")
+      console.error("Fetch error:", err); // log the error for debugging
+      setError(err instanceof Error ? err.message : "Failed to fetch wallet losses");
     } finally {
       setIsLoading(false)
     }
-  }
+  } 
 
   const calculateChemoSessions = (loss: number) => {
     return Math.floor(loss / chemoSessionCost)
@@ -85,7 +85,7 @@ export default function Calculator() {
               <ResultsDisplay
                 investmentLoss={investmentLoss}
                 chemoSessionCost={chemoSessionCost}
-                chemoSessions={calculateChemoSessions(investmentLoss)} // Fixed prop name
+                chemoSessions={calculateChemoSessions(investmentLoss)}
               />
             )}
           </div>
