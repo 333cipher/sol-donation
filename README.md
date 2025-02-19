@@ -16,3 +16,5 @@ A Next.js application that calculates crypto investment losses and compares them
 - Tailwind CSS
 - Shadcn/UI Components
 - Flipside API
+
+S/O to Kellen for inspiring the query methodology/implementation!
